@@ -18,11 +18,25 @@
     fs
       .readFileAsync(files.temp_scale, 'utf8')
       .then((scale) => {
-        console.log('Temperature scale:', typeof scale, scale);
+        temperature.scale = scale;
         return fs.readFileAsync(files.pres_scale, 'utf8');
       })
       .then((scale) => {
-        console.log('Pressure scale:', typeof scale, scale);
+        pressure.scale = scale;
+        return fs.readFileAsync(files.temp_raw, 'utf8');
+      })
+      .then((raw) => {
+        temperature.raw = raw;
+        return fs.readFileAsync(files.pres_raw, 'utf8');
+      })
+      .then((raw) => {
+        pressure.raw = raw;
+        console.log('Temperature: ' + (temperature.raw * temperature.scale));
+        console.log('Pressure: ' + (pressure.raw * pressure.scale));
+      })
+
+      .catch((err) => {
+        console.error('Error:', err.message);
       })
     ;
   }
