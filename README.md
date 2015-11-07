@@ -9,6 +9,14 @@ altitude might not be accurate.
 
 **Important: this modules uses ES2015 (ES6) features, so use a modern version of node.js (v4.x, v5.x etc)**
 
+
+## Installation
+
+```javascript
+npm install --save neo-barometer
+```
+
+
 ## Usage
 
 The module exports four Readable Streams:
