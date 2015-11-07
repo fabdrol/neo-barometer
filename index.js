@@ -4,6 +4,7 @@
   module.exports = {
     Temperature: require('./lib/Temperature'),
     Pressure: require('./lib/Pressure'),
-    Altitude: require('./lib/Altitude')
+    Altitude: require('./lib/Altitude'),
+    Compound: require('./lib/Compound')
   };
 })();
