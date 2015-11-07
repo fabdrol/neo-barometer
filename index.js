@@ -1,23 +1,30 @@
 (function() {
   'use strict';
 
-  let exec = require('child_process').execSync;
+  let fs = Bluebird.promisifyAll(require('fs'));
+  let Bluebird = require('bluebird');
 
-  let commands = {
-    temp_raw: 'cat /sys/class/i2c-dev/i2c-1/device/1-0060/iio\:device0/in_temp_raw',
-    temp_scale: 'cat /sys/class/i2c-dev/i2c-1/device/1-0060/iio\:device0/in_temp_scale',
-    pres_raw: 'cat /sys/class/i2c-dev/i2c-1/device/1-0060/iio\:device0/in_pressure_raw',
-    pres_scale: 'cat /sys/class/i2c-dev/i2c-1/device/1-0060/iio\:device0/in_pressure_scale'
+  let files = {
+    temp_raw: '/sys/class/i2c-dev/i2c-1/device/1-0060/iio\:device0/in_temp_raw',
+    temp_scale: '/sys/class/i2c-dev/i2c-1/device/1-0060/iio\:device0/in_temp_scale',
+    pres_raw: '/sys/class/i2c-dev/i2c-1/device/1-0060/iio\:device0/in_pressure_raw',
+    pres_scale: '/sys/class/i2c-dev/i2c-1/device/1-0060/iio\:device0/in_pressure_scale'
   };
 
   function poll() {
-    try {
-      let temperature = (exec(commands.temp_raw) * exec(commands.temp_scale));
-      let pressure = (exec(commands.pres_raw) * exec(commands.pres_scale));
+    let temperature = { scale: 0, raw: 0 };
+    let pressure = { scale: 0, raw: 0 };
 
-      console.log('Temperature: ' + temperature);
-      console.log('Pressure: ' + pressure);
-    } catch(e) {}
+    fs
+      .readFileAsync(files.temp_scale, 'utf8')
+      .then((scale) => {
+        console.log('Temperature scale:', typeof scale, scale);
+        return fs.readFileAsync(files.pres_scale, 'utf8');
+      })
+      .then((scale) => {
+        console.log('Pressure scale:', typeof scale, scale);
+      })
+    ;
   }
 
   setInterval(poll, 1000);
