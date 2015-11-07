@@ -11,4 +11,11 @@
   pres.on('data', (value) => {
     console.log('Pressure: ' + value);
   });
+
+  function handleError(err) {
+    console.error(err.message);
+  }
+
+  pres.on('error', handleError);
+  temp.on('error', handleError);
 })();
