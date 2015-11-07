@@ -31,12 +31,12 @@
       })
       .then((raw) => {
         pressure.raw = raw;
-        console.log('Temperature: ' + (temperature.raw * temperature.scale));
-        console.log('Pressure: ' + (pressure.raw * pressure.scale));
+        debug('Temperature: ' + (temperature.raw * temperature.scale));
+        debug('Pressure: ' + (pressure.raw * pressure.scale));
       })
 
       .catch((err) => {
-        console.error('Error:', err.message);
+        debug('Error:', err.message);
       })
     ;
   }
