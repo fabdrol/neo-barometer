@@ -21,7 +21,7 @@
   });
 
   comp.on('data', (value) => {
-    debug('Compound:', value);
+    debug('Compound: ' + JSON.stringify(value));
   });
 
   function handleError(err) {
