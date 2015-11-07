@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var debug = require('debug')('neo-barometer-test');
+  var debug = require('debug')('neo-barometer');
 
   var temp = new require('../').Temperature();
   var pres = new require('../').Pressure();
