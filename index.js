@@ -12,10 +12,11 @@
 
   function poll() {
     try {
-      console.log('Raw temp: ' + exec(commands.temp_raw));
-      console.log('Scale temp: ' + exec(commands.temp_scale));
-      console.log('Raw pressure: ' + exec(commands.pres_raw));
-      console.log('Scale pressure: ' + exec(commands.pres_scale));
+      let temperature = (exec(commands.temp_raw) * exec(commands.temp_scale));
+      let pressure = (exec(commands.pres_raw) * exec(commands.pres_scale));
+
+      console.log('Temperature: ' + temperature);
+      console.log('Pressure: ' + pressure);
     } catch(e) {}
   }
 
