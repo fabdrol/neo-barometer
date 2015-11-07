@@ -2,7 +2,7 @@
   'use strict';
 
   module.exports = {
-    Temperature: require('./Temperature'),
-    Pressure: require('./Pressure')
+    Temperature: require('./lib/Temperature'),
+    Pressure: require('./lib/Pressure')
   };
 })();
