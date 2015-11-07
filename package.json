@@ -4,8 +4,7 @@
   "description": "Small module for the barometer brick on the UDOO Neo",
   "main": "index.js",
   "scripts": {
-    "test": "DEBUG=neo-barometer* node .",
-    "start": "node ."
+    "test": "DEBUG=neo-barometer* node ./test"
   },
   "keywords": [
     "udoo",
