@@ -1,1 +1,16 @@
 #!/usr/bin/env node
+
+var cli = require('cli'); 
+ 
+cli.main(function(args, options) {
+  var compound = new require('../index').Compound();
+
+  compound.on('data', function(value) {
+    console.log(JSON.stringify(value));
+  });
+
+  compound.on('error', function(err) {
+    console.error(err);
+    process.exit(1);
+  });
+});

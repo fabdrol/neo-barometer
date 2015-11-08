@@ -1,1 +1,16 @@
 #!/usr/bin/env node
+
+var cli = require('cli'); 
+ 
+cli.main(function(args, options) {
+  var altitude = new require('../index').Altitude();
+
+  altitude.on('data', function(value) {
+    console.log(value);
+  });
+
+  altitude.on('error', function(err) {
+    console.error(err);
+    process.exit(1);
+  });
+});
