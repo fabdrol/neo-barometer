@@ -1,0 +1,35 @@
+#!/usr/bin/env node
+
+var cli = require('cli'); 
+ 
+cli.parse({
+  unit: ['u', 'Return the data in this unit', 'string', 'pascal']
+});
+ 
+cli.main(function(args, options) {
+  var pressure = new require('../index').Pressure();
+
+  pressure.on('data', function(value) {
+    switch(args.unit.toLowerCase()) {
+      case 'hpa':
+      case 'mbar':
+      case 'hectopascal':
+        console.log(value / 100);
+        break;
+
+      case 'kpa':
+      case 'kilopascal':
+        console.log(value / 1000);
+        break;
+
+      default: 
+        console.log(value);
+        break;
+    }
+  });
+
+  pressure.on('error', function(err) {
+    console.error(err);
+    process.exit(1);
+  });
+});

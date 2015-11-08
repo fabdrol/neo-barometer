@@ -13,7 +13,11 @@ altitude might not be accurate.
 ## Installation
 
 ```javascript
+// In a local project
 npm install --save neo-barometer
+
+// For global usage
+npm install -g neo-barometer
 ```
 
 
