@@ -21,7 +21,16 @@ npm install -g neo-barometer
 ```
 
 
-## Usage
+## Usage (cli)
+
+When installed globally, the module installs four cli tools in your `PATH`:
+- `altitude`: outputs altitude in meter to `stdout`
+- `pressure [--unit hpa]`: outputs pressure in pascal to `stdout`. Change unit with flag `--unit [hpa|kpa|pa]`
+- `temperature [--unit celcius]`: outputs temperature in Kelvin to `stdout`. Change unit with flag `--unit [c|celcius|f|fahrenheit|K|Kelvin]`
+- `barometer`: outputs all values in stringified JSON to `stdout`.
+
+
+## Usage (module)
 
 The module exports four Readable Streams:
 - `barometer.Temperature`: a stream of temperature values in degrees celcius.
