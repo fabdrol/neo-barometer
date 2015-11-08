@@ -6,11 +6,11 @@ cli.parse({
   unit: ['u', 'Return the data in this unit', 'string', 'pascal']
 });
  
-cli.main(function(args) {
+cli.main(function(args, options) {
   var pressure = new require('../index').Pressure();
 
   pressure.on('data', function(value) {
-    var unit = args.unit || '';
+    var unit = options.unit || '';
     switch(unit.toLowerCase()) {
       case 'hpa':
       case 'mbar':
