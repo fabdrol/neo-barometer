@@ -10,7 +10,7 @@
     "altitude": "./bin/altitude",
     "pressure": "./bin/pressure",
     "temperature": "./bin/temperature",
-    "barometer": "./bin/barometer",
+    "barometer": "./bin/barometer"
   },
   "keywords": [
     "udoo",
