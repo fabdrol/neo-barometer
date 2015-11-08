@@ -1,6 +1,6 @@
 {
   "name": "neo-barometer",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Small module for the barometer brick on the UDOO Neo",
   "main": "index.js",
   "scripts": {
